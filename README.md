@@ -11,6 +11,13 @@ Event that is fired as soon as an element appears in the user's viewport.
 * **jQuery** 1.8+ ([https://github.com/jquery/jquery](https://github.com/jquery/jquery))
 * **setAnimationFrameTimeout** ([https://github.com/onopko/setAnimationFrameTimeout](https://github.com/onopko/setAnimationFrameTimeout))
 
+```html
+<script src="jquery.min.js"></script>
+<script src="setAnimationFrameTimeout.min.js"></script>
+<script src="jquery.modern.inview.min.js"></script>
+```
+
+
 ## Usage
 
 ```javascript
