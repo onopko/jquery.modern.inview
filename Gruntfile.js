@@ -2,10 +2,8 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 
-		// Import package manifest
 		pkg: grunt.file.readJSON("package.json"),
 
-		// Banner definitions
 		meta: {
 			banner: "/*\n" +
 				" *  <%= pkg.title || pkg.name %> - v<%= pkg.version %>\n" +
@@ -40,7 +38,6 @@ module.exports = function(grunt) {
             }
         },
 
-		// Lint definitions
 		jshint: {
 			files: ["src/jquery.modern.inview.js"],
 			options: {
