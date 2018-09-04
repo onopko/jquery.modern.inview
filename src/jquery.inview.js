@@ -169,11 +169,4 @@
 	$(window).on('scroll resize scrollstop', function () {
 		viewportSize = viewportOffset = null;
 	});
-
-	// IE < 9 scrolls to focused elements without firing the "scroll" event
-	if (!document.documentElement.addEventListener && document.documentElement.attachEvent) {
-		document.documentElement.attachEvent('onfocusin', function () {
-			viewportOffset = null;
-		});
-	}
 })(jQuery);
