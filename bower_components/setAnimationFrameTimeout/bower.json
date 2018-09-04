@@ -1,0 +1,17 @@
+{
+	"name": "setAnimationFrameTimeout",
+	"version": "2.0.1",
+	"homepage": "https://github.com/onopko/setAnimationFrameTimeout.git",
+	"authors": [
+		"Takehiko Ono <me@onotakehiko.com>"
+	],
+	"description": "setAnimationFrameTimeout is an alternative function of setTimeout for modern browsers.",
+	"main": "src/setAnimationFrameTimeout.js",
+	"keywords": [
+		"jquery",
+		"plugin",
+		"jquery-plugin",
+		"setanimationframetimeout"
+	],
+	"license": "MIT"
+}

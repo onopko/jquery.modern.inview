@@ -1,0 +1,29 @@
+{
+	"name": "jquery.modern.inview",
+	"version": "1.0.0",
+	"description": "Element 'inview' Event Plugin",
+	"main": "jquery.modern.inview.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/onopko/jquery.modern.inview.git"
+	},
+	"homepage" : "https://github.com/onopko/jquery.modern.inview/",
+	"docs": "https://github.com/onopko/jquery.modern.inview/#readme",
+	"author": {
+		"name": "Takehiko Ono",
+		"email": "me@onotakehiko.com",
+		"url": "https://onotakehiko.com/"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"grunt": "~0.4.5",
+		"grunt-cli": "~0.1.13",
+		"grunt-contrib-concat": "^0.5.1",
+		"grunt-contrib-jshint": "^0.11.0",
+		"grunt-contrib-uglify": "^0.8.0",
+		"grunt-contrib-watch": "^0.6.1"
+	},
+	"scripts": {
+		"test": "grunt travis --verbose"
+	}
+}
