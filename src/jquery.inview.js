@@ -91,7 +91,7 @@
 				offsetEndX   : 0,
 				offsetStartY : 0,
 				offsetEndY   : 0,
-		    }, inviewObject.data.data);
+			}, inviewObject.data.data);
 
 			var obj = {
 				element: $element,
@@ -117,15 +117,15 @@
 			var elementSize   = { height: $element[0].offsetHeight, width: $element[0].offsetWidth };
 			var elementOffset = $element.offset();
 
-            var startX        = 0;
-            var endX          = 0;
-            var startY        = 0;
-            var endY          = 0;
+			var startX        = 0;
+			var endX          = 0;
+			var startY        = 0;
+			var endY          = 0;
 
-            var offsetStartX  = 0;
-            var offsetEndX    = 0;
-            var offsetStartY  = 0;
-            var offsetEndY    = 0;
+			var offsetStartX  = 0;
+			var offsetEndX    = 0;
+			var offsetStartY  = 0;
+			var offsetEndY    = 0;
 
 			if (option.offsetStartX !== 0) {
 				if (typeof option.offsetStartX === 'number') {
