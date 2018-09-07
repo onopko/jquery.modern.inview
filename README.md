@@ -45,16 +45,16 @@ $('div').one('inview', ...);
 
 ### options
 
-jquery.modern.inview accepts offsetStartX • offsetEndX • offsetStartY • offsetEndY properties.
+jquery.modern.inview accepts offsetLeft • OffsetRight • offsetTop • offsetBottom properties.
 Each value can be took Number (px) or String (%) type.
 
-* offsetStartX (Default: 0)
-* offsetEndX (Default: 0)
-* offsetStartY (Default: 0)
-* offsetEndY (Default: 0)
+* offsetLeft (Default: 0)
+* OffsetRight (Default: 0)
+* offsetTop (Default: 0)
+* offsetBottom (Default: 0)
 
 ```javascript
-$('div').on('inview', { offsetStartX: 30, offsetEndX: 0, offsetStartY: '-10%', offsetEndY: 0 }, function(event, isInView) {
+$('div').on('inview', { offsetLeft: 30, OffsetRight: 0, offsetTop: '-10%', offsetBottom: 0 }, function(event, isInView) {
 	if (isInView) {
 
 	}
