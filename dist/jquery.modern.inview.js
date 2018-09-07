@@ -100,11 +100,11 @@
 			var $element = selector ? $element.find(selector) : inviewObject.$element;
 
 			var option = $.extend({
-				offsetStartX : 0,
-				offsetEndX   : 0,
-				offsetStartY : 0,
-				offsetEndY   : 0,
-		    }, inviewObject.data.data);
+				offsetLeft : 0,
+				offsetRight   : 0,
+				offsetTop : 0,
+				offsetBottom   : 0,
+			}, inviewObject.data.data);
 
 			var obj = {
 				element: $element,
@@ -130,49 +130,49 @@
 			var elementSize   = { height: $element[0].offsetHeight, width: $element[0].offsetWidth };
 			var elementOffset = $element.offset();
 
-            var startX        = 0;
-            var endX          = 0;
-            var startY        = 0;
-            var endY          = 0;
+			var _left         = 0;
+			var _right        = 0;
+			var _top          = 0;
+			var _bottom       = 0;
 
-            var offsetStartX  = 0;
-            var offsetEndX    = 0;
-            var offsetStartY  = 0;
-            var offsetEndY    = 0;
+			var offsetLeft    = 0;
+			var offsetRight   = 0;
+			var offsetTop     = 0;
+			var offsetBottom  = 0;
 
-			if (option.offsetStartX !== 0) {
-				if (typeof option.offsetStartX === 'number') {
-					offsetStartX = option.offsetStartX;
+			if (option.offsetLeft !== 0) {
+				if (typeof option.offsetLeft === 'number') {
+					offsetLeft = option.offsetLeft;
 				}
-				else if (typeof option.offsetStartX === 'string' && option.offsetStartX.indexOf('%') > -1) {
-					offsetStartX = viewportSize.width * parseFloat(option.offsetStartX) / 100;
+				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('%') > -1) {
+					offsetLeft = viewportSize.width * parseFloat(option.offsetLeft) / 100;
 				}
 			}
 
-			if (option.offsetEndX !== 0) {
-				if (typeof option.offsetEndX === 'number') {
-					offsetEndX = option.offsetEndX;
+			if (option.offsetRight !== 0) {
+				if (typeof option.offsetRight === 'number') {
+					offsetRight = option.offsetRight;
 				}
-				else if (typeof option.offsetEndX === 'string' && option.offsetEndX.indexOf('%') > -1) {
-					offsetEndX = viewportSize.width * parseFloat(option.offsetEndX) / 100;
-				}
-			}
-
-			if (option.offsetStartY !== 0) {
-				if (typeof option.offsetStartY === 'number') {
-					offsetStartY = option.offsetStartY;
-				}
-				else if (typeof option.offsetStartY === 'string' && option.offsetStartY.indexOf('%') > -1) {
-					offsetStartY = viewportSize.height * parseFloat(option.offsetStartY) / 100;
+				else if (typeof option.offsetRight === 'string' && option.offsetRight.indexOf('%') > -1) {
+					offsetRight = viewportSize.width * parseFloat(option.offsetRight) / 100;
 				}
 			}
 
-			if (option.offsetEndY !== 0) {
-				if (typeof option.offsetEndY === 'number') {
-					offsetEndY = option.offsetEndY;
+			if (option.offsetTop !== 0) {
+				if (typeof option.offsetTop === 'number') {
+					offsetTop = option.offsetTop;
 				}
-				else if (typeof option.offsetEndY === 'string' && option.offsetEndY.indexOf('%') > -1) {
-					offsetEndY = viewportSize.height * parseFloat(option.offsetEndY) / 100;
+				else if (typeof option.offsetTop === 'string' && option.offsetTop.indexOf('%') > -1) {
+					offsetTop = viewportSize.height * parseFloat(option.offsetTop) / 100;
+				}
+			}
+
+			if (option.offsetBottom !== 0) {
+				if (typeof option.offsetBottom === 'number') {
+					offsetBottom = option.offsetBottom;
+				}
+				else if (typeof option.offsetBottom === 'string' && option.offsetBottom.indexOf('%') > -1) {
+					offsetBottom = viewportSize.height * parseFloat(option.offsetBottom) / 100;
 				}
 			}
 
@@ -180,20 +180,20 @@
 				return;
 			}
 
-			startX = elementOffset.left + offsetStartX;
-			endX   = elementOffset.left + elementSize.width + offsetEndX;
-			startY = elementOffset.top + offsetStartY;
-			endY   = elementOffset.top + elementSize.height + offsetEndY;
+			_left   = elementOffset.left + offsetLeft;
+			_right  = elementOffset.left + elementSize.width + offsetRight;
+			_top    = elementOffset.top + offsetTop;
+			_bottom = elementOffset.top + elementSize.height + offsetBottom;
 
-			startX = (startX < 0) ? 0 : startX;
-			endX   = (endX < 0)   ? 0 : endX;
-			startY = (startY < 0) ? 0 : startY;
-			endY   = (endY < 0)   ? 0 : endY;
+			_left   = (_left < 0) ? 0 : _left;
+			_right  = (_right < 0) ? 0 : _right;
+			_top    = (_top < 0) ? 0 : _top;
+			_bottom = (_bottom < 0) ? 0 : _bottom;
 
-			if (endY >= viewportOffset.top &&
-				startY <= viewportOffset.top + viewportSize.height &&
-				endX >= viewportOffset.left &&
-				startX <= viewportOffset.left + viewportSize.width) {
+			if (_bottom >= viewportOffset.top &&
+				_top <= viewportOffset.top + viewportSize.height &&
+				_right >= viewportOffset.left &&
+				_left <= viewportOffset.left + viewportSize.width) {
 
 				if (!inView) {
 					$element.data('inview', true).trigger('inview', [true]);
@@ -203,7 +203,7 @@
 				$element.data('inview', false).trigger('inview', [false]);
 			}
 
-			$element = option = elementSize = elementOffset = startX = endX = startY = endY = offsetStartX = offsetEndX = offsetStartY = offsetEndY = void 0;
+			$element = option = elementSize = elementOffset = _left = _right = _top = _bottom = offsetLeft = offsetRight = offsetTop = offsetBottom = void 0;
 		}
 
 		return true;
