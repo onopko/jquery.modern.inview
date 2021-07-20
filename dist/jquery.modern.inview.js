@@ -92,7 +92,7 @@
 
 	function checkInView () {
 		if (!inviewObjects.length) {
-			return false;
+			return;
 		}
 
 		var elementObjects = $.map(inviewObjects, function(inviewObject) {
@@ -100,10 +100,10 @@
 			var $element = selector ? $element.find(selector) : inviewObject.$element;
 
 			var option = $.extend({
-				offsetLeft : 0,
-				offsetRight   : 0,
-				offsetTop : 0,
-				offsetBottom   : 0,
+				offsetLeft  : 0,
+				offsetRight : 0,
+				offsetTop   : 0,
+				offsetBottom: 0
 			}, inviewObject.data.data);
 
 			var obj = {
@@ -147,6 +147,12 @@
 				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('%') > -1) {
 					offsetLeft = viewportSize.width * parseFloat(option.offsetLeft) / 100;
 				}
+				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('vw') > -1) {
+					offsetLeft = viewportSize.width * parseFloat(option.offsetLeft) / 100;
+				}
+				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('vh') > -1) {
+					offsetLeft = viewportSize.height * parseFloat(option.offsetLeft) / 100;
+				}
 			}
 
 			if (option.offsetRight !== 0) {
@@ -155,6 +161,12 @@
 				}
 				else if (typeof option.offsetRight === 'string' && option.offsetRight.indexOf('%') > -1) {
 					offsetRight = viewportSize.width * parseFloat(option.offsetRight) / 100;
+				}
+				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('vw') > -1) {
+					offsetRight = viewportSize.width * parseFloat(option.offsetRight) / 100;
+				}
+				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('vh') > -1) {
+					offsetRight = viewportSize.height * parseFloat(option.offsetRight) / 100;
 				}
 			}
 
@@ -165,6 +177,12 @@
 				else if (typeof option.offsetTop === 'string' && option.offsetTop.indexOf('%') > -1) {
 					offsetTop = viewportSize.height * parseFloat(option.offsetTop) / 100;
 				}
+				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('vw') > -1) {
+					offsetTop = viewportSize.width * parseFloat(option.offsetTop) / 100;
+				}
+				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('vh') > -1) {
+					offsetTop = viewportSize.height * parseFloat(option.offsetTop) / 100;
+				}
 			}
 
 			if (option.offsetBottom !== 0) {
@@ -172,6 +190,12 @@
 					offsetBottom = option.offsetBottom;
 				}
 				else if (typeof option.offsetBottom === 'string' && option.offsetBottom.indexOf('%') > -1) {
+					offsetBottom = viewportSize.height * parseFloat(option.offsetBottom) / 100;
+				}
+				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('vw') > -1) {
+					offsetBottom = viewportSize.width * parseFloat(option.offsetBottom) / 100;
+				}
+				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('vh') > -1) {
 					offsetBottom = viewportSize.height * parseFloat(option.offsetBottom) / 100;
 				}
 			}
@@ -185,9 +209,9 @@
 			_top    = elementOffset.top + offsetTop;
 			_bottom = elementOffset.top + elementSize.height + offsetBottom;
 
-			_left   = (_left < 0) ? 0 : _left;
-			_right  = (_right < 0) ? 0 : _right;
-			_top    = (_top < 0) ? 0 : _top;
+			_left   = (_left < 0)   ? 0 : _left;
+			_right  = (_right < 0)  ? 0 : _right;
+			_top    = (_top < 0)    ? 0 : _top;
 			_bottom = (_bottom < 0) ? 0 : _bottom;
 
 			if (_bottom >= viewportOffset.top &&
@@ -205,8 +229,6 @@
 
 			$element = option = elementSize = elementOffset = _left = _right = _top = _bottom = offsetLeft = offsetRight = offsetTop = offsetBottom = void 0;
 		}
-
-		return true;
 	}
 
 	$(window).on('scroll.inview resize.inview scrollstop.inview', function () {
