@@ -79,7 +79,7 @@
 
 	function checkInView () {
 		if (!inviewObjects.length) {
-			return;
+			return false;
 		}
 
 		var elementObjects = $.map(inviewObjects, function(inviewObject) {
@@ -149,10 +149,10 @@
 				else if (typeof option.offsetRight === 'string' && option.offsetRight.indexOf('%') > -1) {
 					offsetRight = viewportSize.width * parseFloat(option.offsetRight) / 100;
 				}
-				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('vw') > -1) {
+				else if (typeof option.offsetRight === 'string' && option.offsetRight.indexOf('vw') > -1) {
 					offsetRight = viewportSize.width * parseFloat(option.offsetRight) / 100;
 				}
-				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('vh') > -1) {
+				else if (typeof option.offsetRight === 'string' && option.offsetRight.indexOf('vh') > -1) {
 					offsetRight = viewportSize.height * parseFloat(option.offsetRight) / 100;
 				}
 			}
@@ -164,10 +164,10 @@
 				else if (typeof option.offsetTop === 'string' && option.offsetTop.indexOf('%') > -1) {
 					offsetTop = viewportSize.height * parseFloat(option.offsetTop) / 100;
 				}
-				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('vw') > -1) {
+				else if (typeof option.offsetTop === 'string' && option.offsetTop.indexOf('vw') > -1) {
 					offsetTop = viewportSize.width * parseFloat(option.offsetTop) / 100;
 				}
-				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('vh') > -1) {
+				else if (typeof option.offsetTop === 'string' && option.offsetTop.indexOf('vh') > -1) {
 					offsetTop = viewportSize.height * parseFloat(option.offsetTop) / 100;
 				}
 			}
@@ -179,10 +179,10 @@
 				else if (typeof option.offsetBottom === 'string' && option.offsetBottom.indexOf('%') > -1) {
 					offsetBottom = viewportSize.height * parseFloat(option.offsetBottom) / 100;
 				}
-				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('vw') > -1) {
+				else if (typeof option.offsetBottom === 'string' && option.offsetBottom.indexOf('vw') > -1) {
 					offsetBottom = viewportSize.width * parseFloat(option.offsetBottom) / 100;
 				}
-				else if (typeof option.offsetLeft === 'string' && option.offsetLeft.indexOf('vh') > -1) {
+				else if (typeof option.offsetBottom === 'string' && option.offsetBottom.indexOf('vh') > -1) {
 					offsetBottom = viewportSize.height * parseFloat(option.offsetBottom) / 100;
 				}
 			}
@@ -216,9 +216,11 @@
 
 			$element = option = elementSize = elementOffset = _left = _right = _top = _bottom = offsetLeft = offsetRight = offsetTop = offsetBottom = void 0;
 		}
+
+		return true;
 	}
 
-	$(window).on('scroll.inview resize.inview scrollstop.inview', function () {
+	$(window).on('scroll.jquerymoderninview resize.jquerymoderninview scrollstop.jquerymoderninview', function () {
 		viewportSize = viewportOffset = void 0;
 	});
 })(jQuery);
